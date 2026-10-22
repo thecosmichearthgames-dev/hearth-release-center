@@ -1,1 +1,3 @@
-export const metadata = { title: "Hearth Release Command Center", description: "Cosmic Hearth Games release planning" }; export default function RootLayout({children}) {return <html lang="en"><body style={{margin:0,background:"#111827",color:"#f9fafb",fontFamily:"Arial,sans-serif"}}>{children}</body></html>}
+import "./globals.css";
+export const metadata = { title: "Hearth Release Command Center", description: "Cosmic Hearth Games release planning" };
+export default function RootLayout({children}) {return <html lang="en"><body>{children}</body></html>;}
