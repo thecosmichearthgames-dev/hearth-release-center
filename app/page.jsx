@@ -8,7 +8,7 @@ export default function Home(){
  const [user,setUser]=useState(null),[loading,setLoading]=useState(true),[releases,setReleases]=useState([]),[error,setError]=useState("");
  useEffect(()=>{
   if(!supabase){setLoading(false);return;}
-  supabase.auth.getUser().then(({data,error})=>{if(error)setError(error.message);setUser(data?.user||null);setLoading(false)});
+  supabase.auth.getUser().then(({data,error})=>{if(error && error.name!=="AuthSessionMissingError" && error.message!=="Auth session missing!")setError(error.message);setUser(data?.user||null);setLoading(false)});
   const {data:{subscription}}=supabase.auth.onAuthStateChange((_event,session)=>{setUser(session?.user||null);setLoading(false)});
   return ()=>subscription.unsubscribe();
  },[]);
